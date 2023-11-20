@@ -4,9 +4,10 @@ namespace UsuariosIdentityAPI.Controllers
 {
     public class UsuariosController : Controller
     {
-        public IActionResult Index()
+        [HttpPost]
+        public IActionResult CadastraUsuario()
         {
-            return View();
+            throw new NotImplementedException();
         }
     }
 }
