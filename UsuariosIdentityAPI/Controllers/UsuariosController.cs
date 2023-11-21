@@ -5,7 +5,7 @@ namespace UsuariosIdentityAPI.Controllers
     public class UsuariosController : Controller
     {
         [HttpPost]
-        public IActionResult CadastraUsuario()
+        public IActionResult CadastraUsuario(CreateUsuarioDTO dto)
         {
             throw new NotImplementedException();
         }
