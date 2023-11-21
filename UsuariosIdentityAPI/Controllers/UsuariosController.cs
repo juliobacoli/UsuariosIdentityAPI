@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using UsuariosIdentity.Application.Data.DTOs;
 
 namespace UsuariosIdentityAPI.Controllers
 {
