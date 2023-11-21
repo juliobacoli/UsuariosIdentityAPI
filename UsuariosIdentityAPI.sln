@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsuariosIdentityAPI", "Usua
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsuariosIdentity.Application", "UsuariosIdentity.Application\UsuariosIdentity.Application.csproj", "{B414D4DD-D6D1-423D-A319-CD4EF1FF1E45}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsuariosIdentity.Domain", "UsuariosIdentity.Domain\UsuariosIdentity.Domain.csproj", "{3035FFE7-B2E0-442C-BBC2-3781442D8253}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B414D4DD-D6D1-423D-A319-CD4EF1FF1E45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B414D4DD-D6D1-423D-A319-CD4EF1FF1E45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B414D4DD-D6D1-423D-A319-CD4EF1FF1E45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3035FFE7-B2E0-442C-BBC2-3781442D8253}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3035FFE7-B2E0-442C-BBC2-3781442D8253}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3035FFE7-B2E0-442C-BBC2-3781442D8253}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3035FFE7-B2E0-442C-BBC2-3781442D8253}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
