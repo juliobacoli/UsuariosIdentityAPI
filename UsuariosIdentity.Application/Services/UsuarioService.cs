@@ -31,11 +31,11 @@ public class UsuarioService : IUsuarioService
 
     public async Task LoginAsync(LoginUsuarioDTO dto)
     {
-        #region NOTA FUTURO
+        #region NOTA
         //NOTA FUTURO: if ternário testando se a chamada do metodo falhou ou fez login corretamente
         //O uso de _ = significa uma variavel descartavel, nesse caso usado para nao declarar outra variável
         #endregion
 
-        _ = ((await _signInManager.PasswordSignInAsync(dto.Username, dto.Password, false, false)).Succeeded ? "Login bem-sucedido" : throw new ApplicationException("Usuário não autenticado!"));
+        _ = (await _signInManager.PasswordSignInAsync(dto.Username, dto.Password, false, false)).Succeeded ? "Login bem-sucedido" : throw new ApplicationException("Usuário não autenticado!");
     }
 }

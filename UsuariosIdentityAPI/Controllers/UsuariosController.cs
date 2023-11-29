@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UsuariosIdentity.Application.Data.DTOs;
 using UsuariosIdentity.Application.Services;
+using UsuariosIdentity.Domain.Models;
 using UsuariosIdentity.Domain.Models.DTOs;
 
 namespace UsuariosIdentityAPI.Controllers;
@@ -10,10 +11,12 @@ public class UsuariosController : Controller
 {
 
     private readonly UsuarioService _usuarioService;
+    private readonly TokenService _tokenService;
 
-    public UsuariosController(UsuarioService usuarioService)
+    public UsuariosController(UsuarioService usuarioService, TokenService tokenService)
     {
         _usuarioService = usuarioService;
+        _tokenService = tokenService;
     }
 
     [HttpPost]
@@ -27,9 +30,12 @@ public class UsuariosController : Controller
 
     [HttpPost]
     [Route("api/Login")]
-    public async Task<IActionResult> Login(LoginUsuarioDTO dto)
+    [ProducesResponseType(typeof(string), 200)]
+    public async Task<IActionResult> Login(LoginUsuarioDTO dto, Usuario user)
     {
         await _usuarioService.LoginAsync(dto);
+
+        await _tokenService.GerarToken(user);
         return Ok();
     }
 }
