@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsuariosIdentityAPI", "UsuariosIdentityAPI\UsuariosIdentityAPI.csproj", "{B67ABE2A-3500-4B88-A2BD-82C577E76774}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsuariosIdentity.API", "UsuariosIdentityAPI\UsuariosIdentity.API.csproj", "{B67ABE2A-3500-4B88-A2BD-82C577E76774}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsuariosIdentity.Application", "UsuariosIdentity.Application\UsuariosIdentity.Application.csproj", "{B414D4DD-D6D1-423D-A319-CD4EF1FF1E45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsuariosIdentity.Domain", "UsuariosIdentity.Domain\UsuariosIdentity.Domain.csproj", "{3035FFE7-B2E0-442C-BBC2-3781442D8253}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsuariosIdentity.Domain", "UsuariosIdentity.Domain\UsuariosIdentity.Domain.csproj", "{3035FFE7-B2E0-442C-BBC2-3781442D8253}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsuariosIdentity.Infrastructure", "UsuariosIdentity.Infrastructure\UsuariosIdentity.Infrastructure.csproj", "{98830749-531A-4F81-A51E-8C55F176299E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsuariosIdentity.Infrastructure", "UsuariosIdentity.Infrastructure\UsuariosIdentity.Infrastructure.csproj", "{98830749-531A-4F81-A51E-8C55F176299E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
