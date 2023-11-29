@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UsuariosIdentity.Application.Data.DTOs;
 using UsuariosIdentity.Application.Services;
+using UsuariosIdentity.Domain.Models.DTOs;
 
 namespace UsuariosIdentityAPI.Controllers;
 
@@ -22,5 +23,13 @@ public class UsuariosController : Controller
     {
         await _usuarioService.CadastraUsuarioAsync(dto);
         return Ok("Usuário cadastrado");
+    }
+
+    [HttpPost]
+    [Route("api/Login")]
+    public async Task<IActionResult> Login(LoginUsuarioDTO dto)
+    {
+        await _usuarioService.LoginAsync(dto);
+        return Ok();
     }
 }
