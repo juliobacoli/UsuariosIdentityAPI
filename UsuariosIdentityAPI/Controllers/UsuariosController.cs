@@ -17,9 +17,10 @@ public class UsuariosController : Controller
 
     [HttpPost]
     [Route("api/cadastraUsuario")]
+    [ProducesResponseType(typeof(string), 200)]
     public async Task<IActionResult> CadastraUsuario(CreateUsuarioDTO dto)
     {
         await _usuarioService.CadastraUsuarioAsync(dto);
-        return Ok();
+        return Ok("Usuário cadastrado");
     }
 }

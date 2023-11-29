@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using System.Data.Common;
+using UsuariosIdentity.Application.Services;
 using UsuariosIdentity.Domain.Models;
 using UsuariosIdentity.Infrastructure.Persistence;
 
@@ -17,6 +17,8 @@ builder.Services
     .AddDefaultTokenProviders();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddScoped<UsuarioService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
