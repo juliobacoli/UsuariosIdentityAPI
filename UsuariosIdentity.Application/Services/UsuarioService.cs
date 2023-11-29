@@ -19,12 +19,12 @@ public class UsuarioService : IUsuarioService
 
     public async Task CadastraUsuarioAsync(CreateUsuarioDTO dto)
     {
-        //Usuario usuario = _mapper.Map<Usuario>(dto);
+        Usuario usuario = _mapper.Map<Usuario>(dto);
 
-        //var result = await _userManager.CreateAsync(usuario, dto.Password);
+        var result = await _userManager.CreateAsync(usuario, dto.Password);
 
-        //if (result.Succeeded)
-        //    return Ok("Usuário cadastrado.");
-        //return BadRequest("Falha ao cadastrar usuário.");
+        if (!result.Succeeded)
+            throw new Exception();
+        
     }
 }
