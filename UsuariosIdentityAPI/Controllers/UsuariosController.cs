@@ -31,11 +31,10 @@ public class UsuariosController : Controller
     [HttpPost]
     [Route("api/Login")]
     [ProducesResponseType(typeof(string), 200)]
-    public async Task<IActionResult> Login(LoginUsuarioDTO dto, Usuario user)
+    public async Task<IActionResult> Login(LoginUsuarioDTO dto)
     {
-        await _usuarioService.LoginAsync(dto);
+        var token = await _usuarioService.LoginAsync(dto);
 
-        await _tokenService.GerarToken(user);
-        return Ok();
+        return Ok(token);
     }
 }

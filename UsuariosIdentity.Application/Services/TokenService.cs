@@ -13,7 +13,7 @@ public class TokenService : ITokenService
     {
     }
 
-    public async Task GerarToken(Usuario user)
+    public async Task<string> GerarToken(Usuario user)
     {
         Claim[] claims = new Claim[]
         {
@@ -31,5 +31,7 @@ public class TokenService : ITokenService
             signingCredentials: signingCredentials);
 
         await Task.CompletedTask;
+
+        return new JwtSecurityTokenHandler().WriteToken(token);
     }
 }

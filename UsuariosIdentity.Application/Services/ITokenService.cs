@@ -4,5 +4,5 @@ namespace UsuariosIdentity.Application.Services;
 
 public interface ITokenService
 {
-    Task GerarToken(Usuario user);
+    Task<string> GerarToken(Usuario user);
 }

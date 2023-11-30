@@ -11,12 +11,15 @@ public class UsuarioService : IUsuarioService
     private readonly IMapper _mapper;
     private readonly UserManager<Usuario> _userManager;
     private readonly SignInManager<Usuario> _signInManager;
+    private readonly TokenService _tokenService;
 
-    public UsuarioService(IMapper mapper, UserManager<Usuario> userManager, SignInManager<Usuario> signInManager)
+
+    public UsuarioService(IMapper mapper, UserManager<Usuario> userManager, SignInManager<Usuario> signInManager, TokenService tokenService)
     {
         _mapper = mapper;
         _userManager = userManager;
         _signInManager = signInManager;
+        _tokenService = tokenService;
     }
 
     public async Task CadastraUsuarioAsync(CreateUsuarioDTO dto)
@@ -29,7 +32,7 @@ public class UsuarioService : IUsuarioService
             throw new Exception();
     }
 
-    public async Task LoginAsync(LoginUsuarioDTO dto)
+    public async Task<string> LoginAsync(LoginUsuarioDTO dto)
     {
         #region NOTA
         //NOTA FUTURO: if ternário testando se a chamada do metodo falhou ou fez login corretamente
@@ -37,5 +40,12 @@ public class UsuarioService : IUsuarioService
         #endregion
 
         _ = (await _signInManager.PasswordSignInAsync(dto.Username, dto.Password, false, false)).Succeeded ? "Login bem-sucedido" : throw new ApplicationException("Usuário não autenticado!");
+
+        var usuario = _signInManager.UserManager.Users
+            .FirstOrDefault(u => u.NormalizedUserName == dto.Username.ToUpper());
+
+        var token = await _tokenService.GerarToken(usuario);
+
+        return token;
     }
 }
