@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UsuariosIdentity.Application.Data.DTOs;
 using UsuariosIdentity.Application.Services;
-using UsuariosIdentity.Domain.Models;
 using UsuariosIdentity.Domain.Models.DTOs;
 
 namespace UsuariosIdentityAPI.Controllers;
@@ -11,12 +10,10 @@ public class UsuariosController : Controller
 {
 
     private readonly UsuarioService _usuarioService;
-    private readonly TokenService _tokenService;
 
-    public UsuariosController(UsuarioService usuarioService, TokenService tokenService)
+    public UsuariosController(UsuarioService usuarioService)
     {
         _usuarioService = usuarioService;
-        _tokenService = tokenService;
     }
 
     [HttpPost]
