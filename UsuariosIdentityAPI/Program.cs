@@ -1,7 +1,10 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Text;
 using UsuariosIdentity.Application.Authorization;
 using UsuariosIdentity.Application.Services;
 using UsuariosIdentity.Domain.Models;
@@ -42,9 +45,25 @@ builder.Services.AddSwaggerGen(c =>
     });
 
 });
+
 builder.Services.AddAuthorization(o =>
 {
     o.AddPolicy("IdadeMinima", policy => policy.AddRequirements(new IdadeMinima(18)));
+});
+
+builder.Services.AddAuthentication(o =>
+{
+    o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(o =>
+{
+    o.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("aBcDeFgH1234567890IjKlMnOpQrStUvWxYz")),
+        ValidateAudience = false,
+        ValidateIssuer = false,
+        ClockSkew = TimeSpan.Zero
+    };
 });
 
 var app = builder.Build();
@@ -57,6 +76,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

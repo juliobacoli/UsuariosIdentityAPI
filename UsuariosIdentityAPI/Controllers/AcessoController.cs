@@ -11,6 +11,6 @@ public class AcessoController : Controller
     [Route("api/Acesso")]
     public async Task<IActionResult> ValidarAcresso()
     {
-        return Ok();
+        return Ok("Acesso permitido!");
     }
 }
