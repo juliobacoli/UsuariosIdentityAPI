@@ -13,7 +13,7 @@ using UsuariosIdentity.Infrastructure.Persistence;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("UsuariosIdentityDb");
+var connectionString = builder.Configuration["ConnectionStrings:UsuariosIdentityDb"];
 builder.Services.AddDbContext<UsuarioDbContext>(o => o.UseSqlServer(connectionString));
 
 builder.Services
@@ -59,7 +59,7 @@ builder.Services.AddAuthentication(o =>
     o.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("aBcDeFgH1234567890IjKlMnOpQrStUvWxYz")),
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["SymmetricSecurityKey"])),
         ValidateAudience = false,
         ValidateIssuer = false,
         ClockSkew = TimeSpan.Zero

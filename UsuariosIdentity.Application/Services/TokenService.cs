@@ -1,4 +1,5 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -8,8 +9,11 @@ namespace UsuariosIdentity.Application.Services;
 
 public class TokenService : ITokenService
 {
-    public TokenService()
+    private readonly IConfiguration _configuration;
+
+    public TokenService(IConfiguration configuration)
     {
+        _configuration = configuration;
     }
 
     public async Task<string> GerarToken(Usuario user)
@@ -21,7 +25,7 @@ public class TokenService : ITokenService
             new Claim(ClaimTypes.DateOfBirth, user.DataNascimento.ToString())
         };
 
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("aBcDeFgH1234567890IjKlMnOpQrStUvWxYz"));
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["SymmetricSecurityKey"]));
         var signingCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
         var token = new JwtSecurityToken
